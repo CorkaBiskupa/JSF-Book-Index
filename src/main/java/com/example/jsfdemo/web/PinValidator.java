@@ -8,20 +8,25 @@ import javax.faces.validator.Validator;
 import javax.faces.validator.ValidatorException;
 
 @FacesValidator("pinValidator")
-public class PinValidator implements Validator {
+public class PinValidator implements Validator{
 
 	@Override
-	public void validate(FacesContext context, UIComponent component, Object value)
+	public void validate(FacesContext ctx, 
+			UIComponent component, 
+			Object value)
 			throws ValidatorException {
 		
-		String pesel = (String) value;
+		String pin = (String) value;
 		
-		if (pesel.length() != 4) {
-			FacesMessage message = new FacesMessage();
-			message.setDetail("PIN musi składać się z 4 cyfr");
-			message.setSummary("PIN musi składać się z 4 cyfr");
-			message.setSeverity(FacesMessage.SEVERITY_ERROR);
-			throw new ValidatorException(message);
+		if(pin.length()<4)
+		{
+			FacesMessage messege = new FacesMessage();
+			messege.setDetail("PIN musi mieć conajmniej 4 znaki");
+			messege.setSummary("PIN musi mieć conajmniej 4 znaki");
+			//messege.setSeverity(FacesMessage.SEVERITY_FATAL);
+			throw new ValidatorException(messege);
 		}
+		
 	}
+
 }

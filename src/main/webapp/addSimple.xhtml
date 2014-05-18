@@ -3,24 +3,97 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:r="http://richfaces.org/rich"
 	template="/templates/default.xhtml">
 	<ui:define name="content">
 		<h:form id="personform">
-			<h:panelGrid columns="2">
-
-				<h:outputText value="#{msg.personFirstNameLabel}" />
-				<h:inputText id="name" value="#{personBean.person.firstName}" />
-
-				<h:outputText value="#{msg.personPinLabel}" />
-				<h:inputText id="yob" value="#{personBean.person.pin}" />
-			</h:panelGrid>
-
-			<h:commandButton value="#{msg.personFormOKButton}"
-				action="#{personBean.addPerson}" />
+		
+		<f:event listener="#{personBean.validateUniquePin}" type="postValidate"></f:event>
+		
+			<h:panelGrid columns="3">
 				
-			<h:panelGrid>
-				<h:messages showDetail="#{true}" showSummary="#{false}" />
+				<h:outputText value="#{msg.personFirstNameLabel}"/>
+            <r:inplaceInput id="firstname" defaultLabel="click to enter your name" 
+            				value="#{personBean.person.firstname}" 
+            				required="true"
+            				>
+            				
+					<a4j:ajax execute="@this" render="messeges"/>
+            				</r:inplaceInput>
+				<r:message for="firstname" ajaxRendered="true"/>
+				
+				
+				<h:outputText value="#{msg.personSurnameLabel}"/>
+				<r:inplaceInput id="surname" defaultLabel="click to enter your surname" 
+            				value="#{personBean.person.surname}" 
+            				required="true"
+            				>
+            				
+					<a4j:ajax execute="@this" render="messeges"/>
+            				</r:inplaceInput>
+				
+				<r:message for="surname" ajaxRendered="true"/>
+				
+				<h:outputText value="#{msg.personPinLabel}"/>
+				<h:inputText id="pin" value="#{personBean.person.pin}">
+					<f:validator validatorId="pinValidator">
+					</f:validator>
+					
+					<a4j:ajax execute="@this" render="messeges"/>
+				</h:inputText>
+				
+				<r:message for="pin" ajaxRendered="true"/>
+				
+				<h:outputText value="#{msg.personZipCodeLabel}"/>
+				<h:inputText id="zipcode" value="#{personBean.person.zipCode}">
+				
+					<a4j:ajax execute="@this" render="messeges"/>
+				</h:inputText>
+				
+				
+				<r:message for="zipcode" ajaxRendered="true"/>
+				
+				<h:outputText value="#{msg.personWeightLabel}"/>
+				
+				<r:inputNumberSpinner value="#{personBean.person.weight}" 
+								maxValue="150.5" 
+								minValue="20.5" 
+								step="0.5">
+				
+					<f:validateDoubleRange id="weight" minimum="20.5" maximum="150.5"/>
+					
+					<a4j:ajax execute="@this" render="messeges"/>
+				</r:inputNumberSpinner>
+				
+				<r:message for="weight" ajaxRendered="true"/>
+				
+				<h:outputText value="Data Urodzenia: "/>
+				<r:calendar value="#{personBean.person.dob}"
+				 			id="calendar"
+				 			datePattern="yyyy.MM.dd"
+				 		>
+				 		<a4j:ajax render="messeges" execute="@this"/>
+				 		</r:calendar>
+				
+				<r:message for="calendar" ajaxRendered="true"/>
+				<h:commandButton value="Add" action="#{personBean.add}"/>
+				
 			</h:panelGrid>
+			
+                <r:notifyMessages stayTime="2000" nonblocking="false"  />
+			<h:panelGrid>
+				<h:messages id="messeges" showDetail="true" showSummary="false"/>
+			</h:panelGrid>
+			<a4j:outputPanel ajaxRendered="true">
+				<h:panelGrid columns="2">
+					<h:outputText value="Imię: "/>
+					<h:outputText value="#{personBean.person.firstname}"/>
+					<h:outputText value="nazwisko: "/>
+					<h:outputText value="#{personBean.person.surname}"/>
+	
+				</h:panelGrid>
+			</a4j:outputPanel>
 		</h:form>
 	</ui:define>
 </ui:composition>
