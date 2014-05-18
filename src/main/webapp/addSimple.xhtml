@@ -56,18 +56,14 @@
 				
 				<h:outputText value="#{msg.personWeightLabel}"/>
 				
-				<r:inputNumberSpinner value="#{personBean.person.weight}" 
+				<r:inputNumberSpinner id="weight" value="#{personBean.person.weight}" 
 								maxValue="150.5" 
 								minValue="20.5" 
 								step="0.5">
 				
-					<f:validateDoubleRange id="weight" minimum="20.5" maximum="150.5"/>
-					
-					<a4j:ajax execute="@this" render="messeges"/>
 				</r:inputNumberSpinner>
 				
 				<r:message for="weight" ajaxRendered="true"/>
-				
 				<h:outputText value="Data Urodzenia: "/>
 				<r:calendar value="#{personBean.person.dob}"
 				 			id="calendar"
