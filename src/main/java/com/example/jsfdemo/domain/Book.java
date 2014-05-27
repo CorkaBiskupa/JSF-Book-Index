@@ -8,7 +8,7 @@ import javax.faces.bean.RequestScoped;
 
 @RequestScoped
 public class Book {
-
+//
 	private String name ="";
 	private String author ="";
 	private String description ="";
