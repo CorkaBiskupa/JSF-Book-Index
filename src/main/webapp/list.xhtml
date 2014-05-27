@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="templates/default.xhtml">
+	<ui:define name="content">
+		<h:form>
+			<p:accordionPanel value="#{manager.bookList}" var="book">
+        		<p:tab title="#{book.author} - #{book.name}">
+            		<h:panelGrid columns = "2">
+            		
+            		<h:panelGrid columns="2" cellpadding="5">
+               			                    
+                		<h:outputText value="Autor :" style="font-weight: bold" />
+                		<h:outputText value="#{book.author}" />
+ 
+                		<h:outputText value="ISBN :" style="font-weight: bold" />
+                		<h:outputText value="#{book.ISBN}" />
+ 
+                		<h:outputText value="Dodano przez :" style="font-weight: bold" />
+                		<h:outputText value="#{book.addedBy}" />
+                	
+            		</h:panelGrid>
+            			
+            			<h:outputText value="Opis :" style="font-weight: bold" />
+                		<h:outputText value="#{book.description}" />
+            		
+            		
+            		</h:panelGrid>
+            		<p:button value="Add to favorites" action="#{manager.AddFavorite(User,book)}"></p:button>
+            		<p:editor widgetVar="editorWidget" value="#{Comment.comment}" />
+            		<p:button value="Dodaj komentarz" action="manager.AddComment(book , Comment , User)" >
+            		<p:fieldset legend="Komentarze" toggleable="true" toggleSpeed="500">
+        				<h:dataTable value="#{book.comments}" var="comment">
+        					<p:fieldset legend="#{comment.writtenBy.name}" >
+        						<h:outputText value="#{comment.comment}" />
+    						</p:fieldset>
+    					</h:dataTable>
+    				</p:fieldset>
+    					
+        		</p:tab>
+    		</p:accordionPanel>
+		</h:form>
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+  <div>
+	<h:form>
+	
+	<h:panelGrid >
+	  <p:breadCrumb>
+    	<p:menuitem value="Strona Glowna" url="home.xhtml" />
+    	<p:menuitem value="Lista Ksiazek" url="list.xhtml" />
+   		<p:menuitem rendered="#{User.logedIn}" value="Ulubione" url="favorites.xhtml" />
+    	<p:menuitem rendered="#{User.logedIn}" value="Dodaj Ksiazke" url="add.xhtml" />
+    	<p:menuitem rendered="#{User.logedIn}" value="Log Out" url="manager.LogOut(User)" />
+    </h:panelGrid>
+	
+	
+	</p:breadCrumb>
+   </h:form>
+  </div>
+</ui:composition>

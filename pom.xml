@@ -46,6 +46,12 @@
 	<!-- RichFaces Bill of Materials -->
 	<dependencyManagement>
 		<dependencies>
+		<dependency>
+	<groupId>org.primefaces.extensions</groupId>
+	<artifactId>primefaces-extensions</artifactId>
+	<version>2.0.0</version>
+</dependency>
+		
 			<dependency>
 				<groupId>org.richfaces</groupId>
 				<artifactId>richfaces-bom</artifactId>

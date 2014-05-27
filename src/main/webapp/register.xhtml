@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" 
+	template="/templates/default.xhtml">
+	<ui:define name="content">
+	
+	<h:panelGrid>
+		<h:outputText value="Zarejestroj sie"/>
+		
+		<h:form>
+		<h:panelGrid columns="2">
+			<h:outputText value="Nazwa uzytkownika"/>
+			<p:inputText value="#{User.username}"> </p:inputText>
+			<h:outputText value="Haslo"/>
+			<p:inputText value="#{User.password}"> </p:inputText>
+			<p:button value="Rejestracja" action="manager.AddUser(User)"> </p:button>
+			
+		</h:panelGrid>
+		</h:form>	
+	
+	</ui:define>
+</ui:composition>
