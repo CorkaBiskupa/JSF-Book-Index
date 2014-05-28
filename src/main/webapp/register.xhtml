@@ -16,10 +16,10 @@
 			<p:inputText value="#{User.username}"> </p:inputText>
 			<h:outputText value="Haslo"/>
 			<p:inputText value="#{User.password}"> </p:inputText>
-			<p:button value="Rejestracja" action="manager.AddUser(User)"> </p:button>
+			<p:commandButton value="Rejestracja" action="#{manager.AddUser(User)}"> </p:commandButton>
 			
 		</h:panelGrid>
 		</h:form>	
-	
+	</h:panelGrid>
 	</ui:define>
 </ui:composition>

@@ -8,16 +8,30 @@
 	<h:form>
 	
 	<h:panelGrid >
-	  <p:breadCrumb>
-    	<p:menuitem value="Strona Glowna" url="home.xhtml" />
-    	<p:menuitem value="Lista Ksiazek" url="list.xhtml" />
-   		<p:menuitem rendered="#{User.logedIn}" value="Ulubione" url="favorites.xhtml" />
-    	<p:menuitem rendered="#{User.logedIn}" value="Dodaj Ksiazke" url="add.xhtml" />
-    	<p:menuitem rendered="#{User.logedIn}" value="Log Out" url="manager.LogOut(User)" />
+	<p:tabMenu activeIndex="#{param.i}">
+		    <p:menuitem value="Strona Glowna" outcome="home.xhtml" icon="ui-icon-star">
+		    </p:menuitem>
+		    
+		    <p:menuitem value="Lista Ksiazek" outcome="list.xhtml" icon="ui-icon-search">
+		    </p:menuitem>
+		    
+		    <p:menuitem rendered="#{User.logedIn}" value="Ulubione" outcome="favorites.xhtml" icon="ui-icon-document">
+		    </p:menuitem>
+		    
+		    <p:menuitem rendered="#{User.logedIn}" value="Dodaj Ksiazke" outcome="add.xhtml">
+		    </p:menuitem>
+		    
+		    <p:menuitem rendered="#{User.logedIn}" value="Log Out" action="#{manager.LogOut(User)}">
+		    </p:menuitem>
+		    <p:menuitem rendered="#{!User.logedIn}" value="Rejestracja" action="register?faces-redirect=true" >
+		    
+		    </p:menuitem>
+	</p:tabMenu>
+
     </h:panelGrid>
 	
 	
-	</p:breadCrumb>
+	
    </h:form>
   </div>
 </ui:composition>

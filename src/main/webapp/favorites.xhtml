@@ -24,21 +24,26 @@
                 	
             		</h:panelGrid>
             			
-            			<h:outputText value="Opis :" style="font-weight: bold" />
-                		<h:outputText value="#{book.description}" />
+            			<h:outputText value="#{book.description}" style="font-weight: bold" />
+                		
             		
             		
             		</h:panelGrid>
-            		<p:button value="Unfavorite" action="#{manager.DeleteFavorite(User,book)}"></p:button>
+            		<p:commandButton value="Unfavorite" action="#{manager.DeleteFavorite(User,book)}"></p:commandButton>
             		<p:editor widgetVar="editorWidget" value="#{Comment.comment}" />
-            		<p:button value="Dodaj komentarz" action="manager.AddComment(book , Comment , User)" >
-            		<p:fieldset legend="Komentarze" toggleable="true" toggleSpeed="500">
-        				<h:dataTable value="#{book.comments}" var="comment">
-        					<p:fieldset legend="#{comment.writtenBy.name}" >
-        						<h:outputText value="#{comment.comment}" />
-    						</p:fieldset>
-    					</h:dataTable>
-    				</p:fieldset>
+            		<p:commandButton value="Dodaj komentarz" action="#{manager.AddComment(book , Comment , User)}" ></p:commandButton>
+            		
+            		<p:dataScroller value="#{manager.GetBookComments(book)}" var="comment" chunkSize="5">
+        				<h:panelGrid columns="2" style="width:100%">
+               
+                
+                   				 <h:outputText value="#{comment.writtenBy.username}" />
+                   				 <h:outputText value="#{comment.comment}"/>
+ 
+                 
+            
+       					 </h:panelGrid>
+    				</p:dataScroller>
     					
         		</p:tab>
     		</p:accordionPanel>

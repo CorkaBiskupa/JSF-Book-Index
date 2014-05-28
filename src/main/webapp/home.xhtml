@@ -15,15 +15,15 @@
 			<p:inputText value="#{User.username}"> </p:inputText>
 			<h:outputText value="Haslo"/>
 			<p:inputText password="true" value="#{User.password}"> </p:inputText>
-			<p:button value="Zaloguj" action="#{manager.LogIn(User)}"> </p:button>
-			<p:button value="Rejestracja" action="register?faces-redirect=true"> </p:button>
+			<p:commandButton value="Zaloguj" action="#{manager.LogIn(User)}"> </p:commandButton>
+			
 		</h:panelGrid>
 		</h:form>
 
 	</h:panelGrid>	
 	
 	<h:panelGrid rendered="#{User.logedIn}" >
-		Witaj <h:outputText value="#{User.Name}"/>
+		Witaj <h:outputText value="#{User.username}"/>
 
 	</h:panelGrid>	
 	

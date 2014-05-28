@@ -4,15 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ApplicationScoped;
+import javax.faces.bean.ManagedBean;
 import javax.inject.Named;
 
 import com.example.jsfdemo.domain.Book;
 import com.example.jsfdemo.domain.Comment;
 import com.example.jsfdemo.domain.User;
 
-
+@ManagedBean
 @ApplicationScoped
-@Named("manager")
 public class BookAndUserManager {
 	
 	List<Book> bookList = new ArrayList<Book>();
@@ -37,6 +37,11 @@ public class BookAndUserManager {
 	public void AddFavorite(User user,Book book)
 	{
 		user.favorites.add(book);
+	}
+	public List<Comment> GetBookComments(Book book)
+	{
+		//
+		return book.comments;
 	}
 	public String AddComment(Book book , Comment comment , User user)
 	{

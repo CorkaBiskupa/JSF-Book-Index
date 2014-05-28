@@ -18,7 +18,7 @@
 			<p:inputText value="#{Book.description}"> </p:inputText>
 			<h:outputText value="ISBN"/>
 			<p:inputText value="#{Book.ISBN}"> </p:inputText>
-			<p:button value="Dodaj ksiazke" action="#{manager.AddBook(Book , User)}"> </p:button>
+			<p:commandButton value="Dodaj ksiazke" action="#{manager.AddBook(Book , User)}"> </p:commandButton>
 
 		</h:panelGrid>	
 		</h:form>
