@@ -8,13 +8,13 @@
 	<ui:define name="content">
 	
 	<h:panelGrid rendered="#{!User.logedIn}" >
-		<h:outputText value="Zaloguj się aby zapisywać książki do ulubionych"/>
+		<h:outputText value="Zaloguj sie aby zapisywac ksiazki do ulubionych"/>
 		<h:form>
 		<h:panelGrid columns="2">
 			<h:outputText value="Login"/>
 			<p:inputText value="#{User.username}"> </p:inputText>
 			<h:outputText value="Haslo"/>
-			<p:inputText password="true" value="#{User.password}"> </p:inputText>
+			<p:inputText type="password" password="true" value="#{User.password}"> </p:inputText>
 			<p:commandButton value="Zaloguj" action="#{manager.LogIn(User)}"> </p:commandButton>
 			
 		</h:panelGrid>
@@ -23,9 +23,9 @@
 	</h:panelGrid>	
 	
 	<h:panelGrid rendered="#{User.logedIn}" >
-		Witaj <h:outputText value="#{User.username}"/>
-
+		Witaj <h:outputText value="#{User.username}"/> 
+		
+		
 	</h:panelGrid>	
-	
 	</ui:define>
 </ui:composition>

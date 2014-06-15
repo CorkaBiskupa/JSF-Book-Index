@@ -8,14 +8,15 @@
 	<ui:define name="content">
 	
 	<h:panelGrid>
-		<h:outputText value="Zarejestroj sie"/>
-		
+		<h:outputText value="Zarejestruj sie"/>
+	
 		<h:form>
 		<h:panelGrid columns="2">
 			<h:outputText value="Nazwa uzytkownika"/>
 			<p:inputText value="#{User.username}"> </p:inputText>
+ 			
 			<h:outputText value="Haslo"/>
-			<p:inputText value="#{User.password}"> </p:inputText>
+			<p:inputText type= "password" value="#{User.password}"> </p:inputText>
 			<p:commandButton value="Rejestracja" action="#{manager.AddUser(User)}"> </p:commandButton>
 			
 		</h:panelGrid>
